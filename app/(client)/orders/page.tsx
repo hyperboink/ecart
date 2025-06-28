@@ -9,6 +9,7 @@ import { getMyOrders } from "@/sanity/queries";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { Logs } from "lucide-react";
+import { Heading } from "@/components/ui/text";
 
 const OrdersPage = async () => {
     const { userId } = await auth();
@@ -22,10 +23,7 @@ const OrdersPage = async () => {
     return (
         <div>
             <Container className="py-10">
-                <h2 className="text-xl font-bold flex gap-2 mb-5">
-                    <Logs className='text-primary-main' />
-                    <span>Orders</span>
-                </h2>
+                <Heading icon={Logs} className="mb-5">Orders</Heading>
 
                 {orders?.length ? (
                     <Card className="w-full">
