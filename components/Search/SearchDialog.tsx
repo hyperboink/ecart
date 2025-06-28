@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useTransition } from 'react';
+import React, { useCallback, useEffect, useState, useTransition } from 'react';
 import {
     Dialog,
     DialogContent,
@@ -40,12 +40,12 @@ const SearchDialog = ({ isOpen, onClose }: Props) => {
         }
     };
 
-    const filterProducts = () => {
+    const filterProducts = useCallback(() => {
         const filtered = products?.filter(product =>
             product?.name?.toLowerCase().includes(debouncedSearchText.toLowerCase())
         );
         setFilteredProducts(filtered);
-    };
+    }, [products, debouncedSearchText]);
 
     useEffect(() => {
         if (isOpen) fetchProducts();
@@ -53,7 +53,7 @@ const SearchDialog = ({ isOpen, onClose }: Props) => {
 
     useEffect(() => {
         filterProducts();
-    }, [debouncedSearchText]);
+    }, [filterProducts]);
 
     const handleProductClick = (slug: string) => {
         setLoading(true);

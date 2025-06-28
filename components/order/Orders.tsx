@@ -12,7 +12,6 @@ import { format } from "date-fns";
 import { Eye } from "lucide-react";
 import { useState } from "react";
 import OrderDetailDialog from "./OrderDetailDialog";
-import toast from "react-hot-toast";
 import CurrencyFormat from "../CurrencyFormat";
 
 const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {

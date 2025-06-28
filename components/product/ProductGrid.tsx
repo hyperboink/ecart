@@ -11,13 +11,6 @@ import { Product } from '@/sanity.types';
 import Loader from '../Loader';
 import EmptyBlock from '../EmptyBlock';
 
-interface Props {
-    setLoading: Dispatch<SetStateAction<boolean>>;
-    setProducts: Dispatch<SetStateAction<Product[]>>;
-    query: string;
-    params: { variant: string };
-}
-
 const ProductGrid = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
@@ -29,19 +22,19 @@ const ProductGrid = () => {
 
     const params = { variant: selectedTab.toLowerCase() };
 
-    const fetchData = async() => {
-        setLoading(true);
-        try{
-            const res = await client.fetch(query, params);
-            setProducts(res);
-        }catch(error){
-            console.log('Product fetching error:', error);
-        }finally{
-            setLoading(false);
-        }
-    }
-
     useEffect(() => {
+        const fetchData = async() => {
+            setLoading(true);
+            try{
+                const res = await client.fetch(query, params);
+                setProducts(res);
+            }catch(error){
+                console.log('Product fetching error:', error);
+            }finally{
+                setLoading(false);
+            }
+        }
+
         fetchData();
     }, [selectedTab]);
 
