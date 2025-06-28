@@ -14,7 +14,7 @@ import { useState } from "react";
 import OrderDetailDialog from "./OrderDetailDialog";
 import CurrencyFormat from "../CurrencyFormat";
 
-const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
+const Orders = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
   const [selectedOrder, setSelectedOrder] = useState<
     MY_ORDERS_QUERYResult[number] | null
   >(null);
@@ -94,4 +94,4 @@ const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
   );
 };
 
-export default OrdersComponent;
+export default Orders;
