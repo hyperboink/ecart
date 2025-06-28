@@ -48,7 +48,7 @@ const getProductBySlug = async(slug: string) => queryFetch(PRODUCT_BY_SLUG_QUERY
 
 const getProductBrand = async(slug: string) => queryFetch(PRODUCT_BRAND_QUERY, { slug }, null);
 
-const getMyOrders = async(userId: string) => queryFetch(MY_ORDERS_QUERY, { userId }, null, { next: { revalidate: 60 } });
+const getMyOrders = async(userId: string) => queryFetch(MY_ORDERS_QUERY, { userId }, null);
 
 const getAllBlogs = async(quantity: number) => queryFetch(GET_ALL_BLOG, { quantity });
 
