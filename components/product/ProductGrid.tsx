@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductTypeTab from './ProductTypeTab';
 import { productTabData } from '@/app/constants/data';
 import { client } from '@/sanity/lib/client';
