@@ -18,23 +18,6 @@ interface Props {
     params: { variant: string };
 }
 
-const fetchData = async({
-    setLoading,
-    setProducts,
-    query,
-    params
-}: Props) => {
-    setLoading(true);
-    try{
-        const res = await client.fetch(query, params);
-        setProducts(res);
-    }catch(error){
-        console.log('Product fetching error:', error);
-    }finally{
-        setLoading(false);
-    }
-}
-
 const ProductGrid = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
@@ -46,14 +29,21 @@ const ProductGrid = () => {
 
     const params = { variant: selectedTab.toLowerCase() };
 
+    const fetchData = async() => {
+        setLoading(true);
+        try{
+            const res = await client.fetch(query, params);
+            setProducts(res);
+        }catch(error){
+            console.log('Product fetching error:', error);
+        }finally{
+            setLoading(false);
+        }
+    }
+
     useEffect(() => {
-        fetchData({
-            setLoading,
-            setProducts,
-            query,
-            params
-        });
-    }, [selectedTab, params, query]);
+        fetchData();
+    }, [selectedTab]);
 
     return (
         <div>

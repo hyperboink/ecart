@@ -19,9 +19,6 @@ const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
   const [selectedOrder, setSelectedOrder] = useState<
     MY_ORDERS_QUERYResult[number] | null
   >(null);
-  const handleDelete = () => {
-    toast.error("Delete method applied for Admin");
-  };
   return (
     <>
       <TableBody>

@@ -11,7 +11,7 @@ import {
 import { BlogCategory } from "@/types/blog";
 import dayjs from "dayjs";
 import { Calendar, ChevronLeftIcon, Pencil } from "lucide-react";
-// @ts-expect-error
+// @ts-expect-error: next-sanity is not properly read
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
