@@ -11,7 +11,7 @@ import {
 import { BlogCategory } from "@/types/blog";
 import dayjs from "dayjs";
 import { Calendar, ChevronLeftIcon, Pencil } from "lucide-react";
-// @ts-ignore
+// @ts-expect-error
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";

@@ -53,7 +53,7 @@ const SearchDialog = ({ isOpen, onClose }: Props) => {
 
     useEffect(() => {
         filterProducts();
-    }, [debouncedSearchText, products]);
+    }, [debouncedSearchText]);
 
     const handleProductClick = (slug: string) => {
         setLoading(true);

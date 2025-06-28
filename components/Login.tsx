@@ -28,7 +28,7 @@ const Login = ({
                     </CardContent>
 
                     <CardFooter className='flex flex-col space-y-2'>
-                        <div className='text-sm text-muted-foreground text-center'>Don't have an account?</div>
+                        <div className='text-sm text-muted-foreground text-center'>Don&apos;t have an account?</div>
 
                         <SignInButton mode='modal'>
                             <Button className='w-full' variant='outline' size='lg'>Create an account</Button>

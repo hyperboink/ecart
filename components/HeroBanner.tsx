@@ -14,7 +14,7 @@ const HeroBanner = () => {
                 </h2>
 
                 <p className="text-white/90 text-base sm:text-lg max-w-xl">
-                    Discover premium gadgets at unbeatable prices. Limited-time offers you can't afford to miss!
+                    Discover premium gadgets at unbeatable prices. Limited-time offers you can&apos;t afford to miss!
                 </p>
 
                 <Link

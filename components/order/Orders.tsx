@@ -9,7 +9,7 @@ import {
   TooltipTrigger,
 } from "../ui/tooltip";
 import { format } from "date-fns";
-import { Eye, X } from "lucide-react";
+import { Eye } from "lucide-react";
 import { useState } from "react";
 import OrderDetailDialog from "./OrderDetailDialog";
 import toast from "react-hot-toast";

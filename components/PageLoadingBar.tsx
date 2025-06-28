@@ -1,15 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
 // Optional config
 NProgress.configure({ showSpinner: false, speed: 400, minimum: 0.2 });
 
-export default function TopLoadingBar() {
-  const router = useRouter();
+export default function PageLoadingBar() {
   const pathname = usePathname();
 
   useEffect(() => {

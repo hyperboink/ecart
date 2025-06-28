@@ -53,7 +53,7 @@ const ProductGrid = () => {
             query,
             params
         });
-    }, [selectedTab]);
+    }, [selectedTab, params, query]);
 
     return (
         <div>

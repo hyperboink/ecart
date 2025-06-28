@@ -19,13 +19,12 @@ interface Props {
 const CategoryProducts = ({ categories, slug }: Props) => {
 	const [currentSlug, setCurrentSlug] = useState(slug);
 	const [products, setProducts] = useState<Product[]>([]);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const router = useRouter();
 
 	const handleCategoryChange = (newSlug: string) => {
 		if (newSlug === currentSlug) return;
 		setCurrentSlug(newSlug);
-		router.push(`/category/${newSlug}`, { scroll: false });
 	};
 
 	const fetchProducts = async (categorySlug: string) => {
@@ -49,7 +48,7 @@ const CategoryProducts = ({ categories, slug }: Props) => {
 
 	useEffect(() => {
 		fetchProducts(currentSlug as string);
-	}, [router]);
+	}, [currentSlug]);
 
 	return (
 		<div className="flex flex-col md:flex-row gap-6 py-6 items-start">
@@ -64,7 +63,7 @@ const CategoryProducts = ({ categories, slug }: Props) => {
 								variant="ghost"
 								className={`capitalize w-full justify-start px-5 py-3 text-sm font-medium rounded-none
 									${isActive
-										? 'bg-primary-main text-white hover:bg-primary-main/90'
+										? 'bg-primary-main text-white hover:bg-primary-main/90 hover:text-white'
 										: 'hover:bg-gray-100'}
 								`}
 							>
