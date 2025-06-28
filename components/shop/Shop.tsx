@@ -29,44 +29,6 @@ const Shop = ({ categories, brands }: Props) => {
     const [selectedBrand, setSelectedBrand] = useState<string|null>(brandParams || null);
     const [selectedPrice , setSelectedPrice] = useState<string|null>(null);
 
-    const fetchProducts = async () => {
-        setLoading(true);
-
-        try {
-            let minPrice = 0;
-            let maxPrice = 10000;
-
-            if (selectedPrice) {
-                const [min, max] = selectedPrice.split("-").map(Number);
-                minPrice = min;
-                maxPrice = max;
-            }
-
-            const query = `
-                *[_type == 'product' 
-                    && (!defined($selectedCategory) || references(*[_type == "category" && slug.current == $selectedCategory]._id))
-                    && (!defined($selectedBrand) || references(*[_type == "brand" && slug.current == $selectedBrand]._id))
-                    && price >= $minPrice && price <= $maxPrice
-                ] 
-                | order(name asc) {
-                    ...,"categories": categories[]->title
-                }
-            `;
-
-            const data = await client.fetch(
-                query,
-                { selectedCategory, selectedBrand, minPrice, maxPrice },
-                { next: { revalidate: 0 } }
-            );
-
-            setProducts(data);
-        } catch (error) {
-          console.log(error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
     const resetFilters = () => {
         setSelectedCategory(null);
         setSelectedBrand(null);
@@ -74,6 +36,44 @@ const Shop = ({ categories, brands }: Props) => {
     }
 
     useEffect(() => {
+        const fetchProducts = async () => {
+            setLoading(true);
+    
+            try {
+                let minPrice = 0;
+                let maxPrice = 10000;
+    
+                if (selectedPrice) {
+                    const [min, max] = selectedPrice.split("-").map(Number);
+                    minPrice = min;
+                    maxPrice = max;
+                }
+    
+                const query = `
+                    *[_type == 'product' 
+                        && (!defined($selectedCategory) || references(*[_type == "category" && slug.current == $selectedCategory]._id))
+                        && (!defined($selectedBrand) || references(*[_type == "brand" && slug.current == $selectedBrand]._id))
+                        && price >= $minPrice && price <= $maxPrice
+                    ] 
+                    | order(name asc) {
+                        ...,"categories": categories[]->title
+                    }
+                `;
+    
+                const data = await client.fetch(
+                    query,
+                    { selectedCategory, selectedBrand, minPrice, maxPrice },
+                    { next: { revalidate: 0 } }
+                );
+    
+                setProducts(data);
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false);
+            }
+        };
+    
         fetchProducts();
     }, [selectedCategory, selectedBrand, selectedPrice]);
     

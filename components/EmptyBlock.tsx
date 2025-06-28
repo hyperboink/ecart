@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 interface Props {
     title?: string;
     content?: string;
-    icon?: React.ElementType;
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number; className?: string }>;
     className?: string;
     hasButton?: boolean;
 }

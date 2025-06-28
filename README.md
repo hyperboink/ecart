@@ -1,4 +1,4 @@
-# 🛒 Ecart Ecommerce App
+# 🛒 Ecart Shop Ecommerce App
 
 A sleek, full-stack E-Commerce platform built with **Next.js**, **Sanity CMS**, **Tailwind CSS**, **Stripe**, with **authentication**. Designed for scalability, performance, and seamless shopping experiences.
 

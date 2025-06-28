@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import EmptyBlock from '../EmptyBlock';
 import { ListCollapse } from 'lucide-react';
