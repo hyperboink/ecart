@@ -14,7 +14,7 @@ export const { sanityFetch, SanityLive } = defineLive({
   client: client.withConfig({ 
     // Live content is currently only available on the experimental API
     // https://www.sanity.io/docs/api-versioning
-    apiVersion: 'vX',
+    apiVersion: '2024-06-01',
     client,
     serverToken: token,
     browserToken: token,
